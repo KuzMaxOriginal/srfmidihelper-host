@@ -1,26 +1,14 @@
-#!/bin/sh
-# Copyright 2013 The Chromium Authors. All rights reserved.
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
+#!/bin/bash
 
 set -e
 
-if type -p java; then
+if type -p java 1> dev/null 2>&1; then
     _java=java
 elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]];  then
     _java="$JAVA_HOME/bin/java"
 else
     echo "Java is not installed!"
-    return
-fi
-
-if [[ "$_java" ]]; then
-    version=$("$_java" -version 2>&1 | awk -F '"' '/version/ {print $2}')
-
-    if [[ "$version" < "8" ]]; then
-        echo "Java version is less than 8!"
-        return
-    fi
+    exit 2
 fi
 
 DIR="$( cd "$( dirname "$0" )" && pwd )"
