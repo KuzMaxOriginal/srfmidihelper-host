@@ -1,6 +1,6 @@
 {
   "name": "com.mkuzmin.srfmidihelper",
-  "description": "SRF Midi Helper",
+  "description": "Sight Reading Factory MIDI Helper",
   "path": "srfmidihelper.bat",
   "type": "stdio",
   "allowed_origins": [

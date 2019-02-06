@@ -30,6 +30,16 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/windows/**</exclude>
+                    <exclude>**/linux/**</exclude>
+                </excludes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -42,26 +52,44 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib</classpathPrefix>
-                            <mainClass>com.mkuzmin.srfmidihelper.Main</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>jar-srfmidihelper</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
+                            <finalName>${project.artifactId}</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>src/main/assembly/jar.xml</descriptor>
+                            </descriptors>
+                            <archive>
+                                <manifest>
+                                    <mainClass>com.mkuzmin.srfmidihelper.Main</mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>zip-srfmidihelper</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>${project.artifactId}-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                             <descriptors>
                                 <descriptor>src/main/assembly/zip.xml</descriptor>
