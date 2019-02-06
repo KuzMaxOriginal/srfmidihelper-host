@@ -1,4 +1,4 @@
-package com.mkuzmin.srfmidi;
+package com.mkuzmin.srfmidihelper;
 
 import org.json.*;
 
