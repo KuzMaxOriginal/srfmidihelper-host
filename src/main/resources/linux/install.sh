@@ -5,6 +5,24 @@
 
 set -e
 
+if type -p java; then
+    _java=java
+elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]];  then
+    _java="$JAVA_HOME/bin/java"
+else
+    echo "Java is not installed!"
+    return
+fi
+
+if [[ "$_java" ]]; then
+    version=$("$_java" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+
+    if [[ "$version" < "8" ]]; then
+        echo "Java version is less than 8!"
+        return
+    fi
+fi
+
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 if [ "$(uname -s)" = "Darwin" ]; then
   if [ "$(whoami)" = "root" ]; then
