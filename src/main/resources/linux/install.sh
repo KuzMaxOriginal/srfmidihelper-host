@@ -2,7 +2,7 @@
 
 set -e
 
-if type -p java 1> dev/null 2>&1; then
+if type -p java 1> /dev/null 2>&1; then
     _java=java
 elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]];  then
     _java="$JAVA_HOME/bin/java"
