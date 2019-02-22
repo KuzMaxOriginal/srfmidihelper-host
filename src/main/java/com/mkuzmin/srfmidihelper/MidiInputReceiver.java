@@ -8,11 +8,9 @@ import java.util.*;
 import java.util.logging.Logger;
 
 public class MidiInputReceiver implements Receiver {
-    private NativeMessagingIO messagingIO;
     private String deviceIndex;
 
-    public MidiInputReceiver(NativeMessagingIO messagingIO, String deviceIndex) {
-        this.messagingIO = messagingIO;
+    public MidiInputReceiver(String deviceIndex) {
         this.deviceIndex = deviceIndex;
     }
 

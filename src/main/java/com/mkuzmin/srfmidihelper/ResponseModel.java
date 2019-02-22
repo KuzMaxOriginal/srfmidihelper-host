@@ -8,7 +8,7 @@ import java.util.*;
 public class ResponseModel {
     private static void sendResponse(JSONObject response) {
         try {
-            NativeMessagingIO.getInstance().sendMessage(response);
+            NativeMessagingIO.SYSTEM_IO.sendMessage(response);
         } catch (IOException ex) {
             ex.printStackTrace();
         }

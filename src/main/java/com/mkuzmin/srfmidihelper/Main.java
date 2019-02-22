@@ -57,7 +57,7 @@ public class Main {
         new Thread(() -> {
             while (true) {
                 try {
-                    JSONObject message = NativeMessagingIO.getInstance().receiveMessage();
+                    JSONObject message = NativeMessagingIO.SYSTEM_IO.receiveMessage();
 
                     if (message != null) {
                         switch (message.getString("cmd")) {
@@ -84,7 +84,7 @@ public class Main {
 
                                             Transmitter transmitter = listeningMidiDevice.getTransmitter();
 
-                                            transmitter.setReceiver(new MidiInputReceiver(NativeMessagingIO.getInstance(), deviceIndex));
+                                            transmitter.setReceiver(new MidiInputReceiver(deviceIndex));
                                             listeningMidiDevice.open();
                                         }
                                     }
