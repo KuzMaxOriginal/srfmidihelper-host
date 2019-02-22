@@ -1,11 +1,6 @@
 package com.mkuzmin.srfmidihelper;
 
-import org.json.*;
-
 import javax.sound.midi.*;
-import java.io.IOException;
-import java.util.*;
-import java.util.logging.Logger;
 
 public class MidiInputReceiver implements Receiver {
     private String deviceIndex;
@@ -20,5 +15,6 @@ public class MidiInputReceiver implements Receiver {
     }
 
     @Override
-    public void close() { }
+    public void close() {
+    }
 }
