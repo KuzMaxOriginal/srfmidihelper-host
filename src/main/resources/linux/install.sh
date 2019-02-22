@@ -26,7 +26,7 @@ else
   fi
 fi
 
-HOST_NAME=srfmidihelper
+HOST_NAME=com.mkuzmin.srfmidihelper
 
 # Create directory to store native messaging host.
 mkdir -p "$TARGET_DIR"

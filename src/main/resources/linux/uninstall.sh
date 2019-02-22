@@ -16,6 +16,6 @@ else
   fi
 fi
 
-HOST_NAME=srfmidihelper
+HOST_NAME=com.mkuzmin.srfmidihelper
 rm "$TARGET_DIR/$HOST_NAME.json"
 echo "Sight Reading Factory MIDI Helper - Host has been uninstalled."
